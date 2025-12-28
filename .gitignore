@@ -1,0 +1,6 @@
+keys/
+*.bin
+*.fit
+*.dtb
+Image
+u-boot/
