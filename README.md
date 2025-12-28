@@ -33,4 +33,8 @@ This project implements a complete **Chain of Trust** for an ARMv8 platform. It 
     ```
 
 ## Proof of Concept
-**(Paste your logs here: One screenshot of "OK" and one screenshot of "Bad Data Hash")**
+
+<img width="890" height="682" alt="image" src="https://github.com/user-attachments/assets/34c76b9a-3f9c-4777-ba79-bf4d8742b6a8" />
+
+<img width="890" height="682" alt="image" src="https://github.com/user-attachments/assets/e0f54174-6e49-4ca6-ab87-9310867422b3" />
+
