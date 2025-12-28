@@ -31,10 +31,20 @@ This project implements a complete **Chain of Trust** for an ARMv8 platform. It 
     ```bash
     ./scripts/run_qemu.sh <path_to_your_u_boot_bin>
     ```
+    *Note: Since the U-Boot binary is large and architecture-specific, it is not included in this repository. Please point this argument to your locally compiled `u-boot.bin`.*
 
 ## Proof of Concept
 
-<img width="890" height="682" alt="image" src="https://github.com/user-attachments/assets/34c76b9a-3f9c-4777-ba79-bf4d8742b6a8" />
+### 1. Authorized Boot (Success)
+The bootloader verifies the digital signature against the public key stored in the Device Tree. Since the signature matches, the kernel is allowed to boot.
+* **Observation:** Note the `sha256,rsa2048:dev+ OK` confirmation.
 
-<img width="890" height="682" alt="image" src="https://github.com/user-attachments/assets/e0f54174-6e49-4ca6-ab87-9310867422b3" />
+<img width="890" alt="Successful Boot Log" src="https://github.com/user-attachments/assets/34c76b9a-3f9c-4777-ba79-bf4d8742b6a8" />
 
+<br>
+
+### 2. Tampered Boot (Security Enforcement)
+After modifying the kernel image by just a few bytes, the verification fails. The bootloader correctly detects the corruption and halts the boot process.
+* **Observation:** Note the `Bad Data Hash` and `ERROR: can't get kernel image!` messages.
+
+<img width="890" alt="Failed Boot Log - Tamper Detection" src="https://github.com/user-attachments/assets/e0f54174-6e49-4ca6-ab87-9310867422b3" />
